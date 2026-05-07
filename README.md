@@ -1,8 +1,8 @@
-DataFlow Analytics — ROI Calculator
+**DataFlow Analytics — ROI Calculator**
 A pre-sales ROI calculator built to simulate a real Sales Engineer deliverable. Prospects enter their team size, hourly rates, and operational metrics to receive a personalized return-on-investment estimate for the fictional DataFlow Analytics platform.
-Live Demo →
 
-About this project
+
+**About this project**
 This project was built as a portfolio piece to demonstrate Sales Engineering skills. ROI calculators are one of the most common deliverables an SE produces during a sales cycle — they quantify business value for economic buyers and help accelerate deal velocity.
 The calculator models three value drivers:
 
@@ -11,7 +11,7 @@ Incident cost avoidance — fewer data pipeline failures and stale dashboards, v
 Platform ROI — net return after subtracting annual license cost, expressed as a dollar figure and a payback period
 
 
-What I built
+**What I built**
 
 Interactive inputs for team size, hourly rate, weekly reporting hours, and annual incident count
 Live calculation engine that updates all metrics on every keystroke
@@ -22,14 +22,14 @@ Expandable methodology section documenting all assumptions (standard in real SE 
 Fully responsive design that works on mobile and desktop
 
 
-Tech stack
+**Tech stack**
 
 Vanilla HTML, CSS, JavaScript — no frameworks, no dependencies
 Google Fonts (DM Serif Display + DM Sans)
 Hosted on GitHub Pages
 
 
-Skills demonstrated
+**Skills demonstrated**
 
 Understanding of enterprise SaaS sales cycles and pre-sales deliverables
 Ability to translate business metrics into quantifiable ROI models
@@ -38,11 +38,11 @@ Technical documentation (this README, in-app methodology section)
 Designing for a non-technical economic buyer audience
 
 
-How to run locally
+**How to run locally**
 No build step needed. Just open index.html in any browser.
 bashgit clone https://github.com/yourusername/dataflow-roi-calculator
 cd dataflow-roi-calculator
 open index.html
 
 
-Built by Jimmy Kearney as a Sales Engineer portfolio project. DataFlow Analytics is a fictional company.
+**Built by Jimmy Kearney as a Sales Engineer portfolio project. DataFlow Analytics is a fictional company.**
