@@ -3,163 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JimmyROI — ROI Calculator</title>
+<title>JimmyROI — Data Analytics ROI Calculator</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0f1829;
-    --ink-soft: #a0aec8;
-    --ink-muted: #f8f9ff;
-    --surface: #ffffff;
-    --surface-2: #0a1120;
-    --surface-3: #162038;
-    --accent: #2563eb;
-    --accent-light: rgba(37,99,235,0.15);
-    --accent-text: #1d4ed8;
-    --border: rgba(15,17,23,0.1);
-    --border-strong: rgba(15,17,23,0.18);
-    --radius: 12px;
-    --radius-sm: 8px;
+    --bg: #060d1f;
+    --bg-2: #0b1530;
+    --bg-3: #112044;
+    --bg-4: #1a2f5a;
+    --card-bg: #0e1c3a;
+    --accent: #3b82f6;
+    --accent-dim: rgba(59,130,246,0.15);
+    --accent-border: rgba(59,130,246,0.3);
+    --text-primary: #f0f4ff;
+    --text-secondary: #94a3c4;
+    --text-muted: #4e6080;
+    --border: rgba(255,255,255,0.07);
+    --border-med: rgba(255,255,255,0.12);
+    --green: #34d399;
+    --radius: 14px;
+    --radius-sm: 9px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--surface-2);
-    color: #ffffff;
+    background: var(--bg);
+    color: var(--text-primary);
     min-height: 100vh;
-    padding: 0;
   }
 
   .page-header {
-    background: var(--ink);
-    padding: 18px 48px;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .logo { display: flex; align-items: center; gap: 10px; }
 
   .logo-mark {
-    width: 28px;
-    height: 28px;
+    width: 30px; height: 30px;
     background: var(--accent);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
   }
 
   .logo-mark svg { width: 16px; height: 16px; }
 
   .logo-name {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-    color: #ffffff;
-    letter-spacing: -0.01em;
+    font-weight: 500; font-size: 16px;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
   }
 
   .logo-name span { color: #93c5fd; }
 
+  .header-badge {
+    font-size: 11px; color: var(--text-muted);
+    border: 1px solid var(--border-med);
+    padding: 5px 12px; border-radius: 99px;
+  }
+
   .header-cta {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 6px;
+    background: var(--accent); color: white; border: none;
+    padding: 8px 20px; border-radius: 6px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    letter-spacing: 0.01em;
+    font-size: 13px; font-weight: 500; cursor: pointer;
   }
 
   .hero {
-    background: var(--ink);
-    padding: 64px 48px 80px;
-    position: relative;
-    overflow: hidden;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 48px 72px;
+    position: relative; overflow: hidden;
   }
 
-  .hero::after {
+  .hero::before {
     content: '';
-    position: absolute;
-    right: -100px;
-    top: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(26,107,74,0.15) 0%, transparent 70%);
+    position: absolute; left: -100px; top: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 65%);
     pointer-events: none;
   }
 
   .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(93,219,162,0.12);
-    border: 1px solid rgba(93,219,162,0.25);
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
     color: #93c5fd;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 99px;
-    margin-bottom: 20px;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 99px; margin-bottom: 22px;
   }
 
   .hero h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: 44px;
-    font-weight: 400;
-    color: #ffffff;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    max-width: 600px;
-    margin-bottom: 16px;
+    font-size: 46px; font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.12; letter-spacing: -0.02em;
+    max-width: 580px; margin-bottom: 16px;
   }
 
-  .hero h1 em {
-    font-style: italic;
-    color: #93c5fd;
-  }
+  .hero h1 em { font-style: italic; color: #93c5fd; }
 
   .hero-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.55);
-    font-weight: 300;
-    line-height: 1.6;
-    max-width: 480px;
+    font-size: 15px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.6; max-width: 460px;
   }
 
-  .main {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
-  }
+  .main { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
 
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--border-med);
     border-radius: var(--radius);
-    padding: 28px 32px;
-    margin-bottom: 20px;
+    padding: 28px 32px; margin-bottom: 20px;
   }
 
   .card-title {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    margin-bottom: 20px;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 20px;
   }
 
   .inputs-grid {
@@ -169,189 +137,125 @@
   }
 
   .field label {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink-soft);
-    margin-bottom: 8px;
+    display: block; font-size: 12px; font-weight: 500;
+    color: var(--text-secondary); margin-bottom: 8px;
   }
 
-  .field-input-wrap {
-    position: relative;
-  }
+  .field-input-wrap { position: relative; }
 
   .field-input-wrap .prefix {
-    position: absolute;
-    left: 12px;
-    top: 50%;
+    position: absolute; left: 12px; top: 50%;
     transform: translateY(-50%);
-    font-size: 13px;
-    color: var(--ink-muted);
-    pointer-events: none;
+    font-size: 13px; color: var(--text-muted); pointer-events: none;
   }
 
   .field input {
-    width: 100%;
-    height: 40px;
-    border: 1px solid var(--border-strong);
+    width: 100%; height: 40px;
+    border: 1px solid var(--border-med);
     border-radius: var(--radius-sm);
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: #ffffff;
-    background: var(--surface);
-    padding: 0 12px;
-    outline: none;
-    transition: border-color 0.15s;
+    font-size: 14px; font-weight: 500;
+    color: var(--text-primary);
+    background: var(--bg-3);
+    padding: 0 12px; outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
 
   .field input.has-prefix { padding-left: 24px; }
 
   .field input:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(26,107,74,0.1);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
   }
 
-  .field .hint {
-    font-size: 11px;
-    color: var(--ink-muted);
-    margin-top: 5px;
-  }
+  .field .hint { font-size: 11px; color: var(--text-muted); margin-top: 5px; }
 
   .results-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: 14px; margin-bottom: 24px;
   }
 
   .metric {
-    background: var(--surface-2);
+    background: var(--bg-3);
+    border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 16px 18px;
   }
 
   .metric-label {
-    font-size: 11px;
-    color: var(--ink-muted);
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    margin-bottom: 6px;
+    font-size: 11px; color: var(--text-muted);
+    font-weight: 500; letter-spacing: 0.04em; margin-bottom: 6px;
   }
 
   .metric-value {
     font-family: 'DM Serif Display', serif;
-    font-size: 26px;
-    color: #ffffff;
+    font-size: 26px; color: var(--text-primary);
     letter-spacing: -0.02em;
   }
 
-  .metric-value.green { color: var(--accent); }
+  .metric-value.blue { color: #60a5fa; }
+  .metric-value.white { color: #f0f4ff; }
 
-  .metric-sub {
-    font-size: 11px;
-    color: var(--ink-muted);
-    margin-top: 3px;
-  }
+  .metric-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
 
-  .breakdown-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
+  .breakdown-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .breakdown-table tr { border-bottom: 1px solid var(--border); }
+  .breakdown-table tr:last-child { border-bottom: none; }
 
-  .breakdown-table tr {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .breakdown-table tr:last-child {
-    border-bottom: none;
-  }
-
-  .breakdown-table td {
-    padding: 10px 0;
-    color: var(--ink-soft);
-  }
+  .breakdown-table td { padding: 10px 0; color: var(--text-secondary); }
 
   .breakdown-table td:last-child {
-    text-align: right;
-    font-weight: 500;
-    color: #ffffff;
+    text-align: right; font-weight: 500; color: var(--text-primary);
   }
 
   .breakdown-table tr.total td {
-    font-weight: 500;
-    color: #ffffff;
-    font-size: 14px;
-    padding-top: 14px;
+    font-weight: 500; color: var(--text-primary);
+    font-size: 14px; padding-top: 14px;
   }
 
   .breakdown-table tr.total td:last-child {
-    color: var(--accent);
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
+    color: #60a5fa;
+    font-family: 'DM Serif Display', serif; font-size: 18px;
   }
 
   .payback-bar-wrap {
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 20px; padding-top: 20px;
     border-top: 1px solid var(--border);
   }
 
-  .payback-label {
-    font-size: 12px;
-    color: var(--ink-muted);
-    margin-bottom: 8px;
-  }
+  .payback-label { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
 
   .bar-track {
-    height: 6px;
-    background: var(--surface-3);
-    border-radius: 99px;
-    overflow: hidden;
+    height: 5px; background: var(--bg-4);
+    border-radius: 99px; overflow: hidden;
   }
 
   .bar-fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 99px;
-    transition: width 0.4s ease;
+    height: 100%; background: var(--accent);
+    border-radius: 99px; transition: width 0.4s ease;
   }
 
   .payback-months {
-    font-size: 13px;
-    font-weight: 500;
-    color: #ffffff;
-    margin-top: 6px;
+    font-size: 13px; font-weight: 500;
+    color: var(--text-primary); margin-top: 6px;
   }
 
   .assumptions {
-    background: var(--surface-2);
-    border: 1px solid var(--border);
+    background: var(--card-bg);
+    border: 1px solid var(--border-med);
     border-radius: var(--radius);
-    padding: 20px 28px;
-    margin-bottom: 20px;
+    padding: 20px 28px; margin-bottom: 20px;
   }
 
   .assumptions summary {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink-muted);
-    cursor: pointer;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    font-size: 12px; font-weight: 500;
+    color: var(--text-muted); cursor: pointer;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    list-style: none; display: flex; align-items: center; gap: 6px;
   }
 
-  .assumptions summary::after {
-    content: '↓';
-    font-size: 11px;
-    transition: transform 0.2s;
-  }
-
+  .assumptions summary::after { content: '↓'; font-size: 11px; transition: transform 0.2s; }
   .assumptions[open] summary::after { transform: rotate(180deg); }
 
   .assumptions-body {
@@ -362,93 +266,65 @@
   }
 
   .assumption-item {
-    font-size: 12px;
-    color: var(--ink-soft);
-    line-height: 1.5;
-    padding-left: 14px;
-    border-left: 2px solid var(--accent-light);
+    font-size: 12px; color: var(--text-secondary);
+    line-height: 1.5; padding-left: 14px;
+    border-left: 2px solid var(--accent-border);
   }
 
   .cta-card {
-    background: var(--ink);
+    background: var(--bg-3);
+    border: 1px solid var(--accent-border);
     border-radius: var(--radius);
     padding: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 24px;
   }
 
   .cta-text h3 {
     font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: #ffffff;
-    margin-bottom: 6px;
+    font-size: 22px; font-weight: 400;
+    color: var(--text-primary); margin-bottom: 6px;
   }
 
-  .cta-text p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-  }
+  .cta-text p { font-size: 13px; color: var(--text-secondary); font-weight: 300; }
 
-  .cta-buttons {
-    display: flex;
-    gap: 10px;
-    flex-shrink: 0;
-  }
+  .cta-buttons { display: flex; gap: 10px; flex-shrink: 0; }
 
   .btn-primary {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 11px 24px;
-    border-radius: var(--radius-sm);
+    background: var(--accent); color: white; border: none;
+    padding: 11px 24px; border-radius: var(--radius-sm);
     font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    white-space: nowrap;
+    font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap;
   }
 
   .btn-secondary {
-    background: transparent;
-    color: rgba(255,255,255,0.7);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 11px 24px;
-    border-radius: var(--radius-sm);
+    background: transparent; color: var(--text-secondary);
+    border: 1px solid var(--border-med);
+    padding: 11px 24px; border-radius: var(--radius-sm);
     font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    cursor: pointer;
-    white-space: nowrap;
+    font-size: 13px; font-weight: 400; cursor: pointer; white-space: nowrap;
   }
 
   .footer {
-    text-align: center;
-    padding: 24px;
-    font-size: 11px;
-    color: var(--ink-muted);
+    text-align: center; padding: 24px;
+    font-size: 11px; color: var(--text-muted);
+    border-top: 1px solid var(--border);
   }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .card, .assumptions, .cta-card {
-    animation: fadeUp 0.4s ease both;
-  }
-
+  .card, .assumptions, .cta-card { animation: fadeUp 0.4s ease both; }
   .card:nth-child(2) { animation-delay: 0.05s; }
   .card:nth-child(3) { animation-delay: 0.1s; }
 
   @media (max-width: 640px) {
-    .page-header { padding: 16px 20px; }
-    .hero { padding: 40px 20px 56px; }
+    .page-header { padding: 14px 20px; }
+    .hero { padding: 40px 20px 52px; }
     .hero h1 { font-size: 30px; }
-    .main { padding: 28px 16px 60px; }
+    .main { padding: 24px 16px 60px; }
     .card { padding: 20px; }
     .cta-card { flex-direction: column; }
     .cta-buttons { width: 100%; }
@@ -467,13 +343,14 @@
         <rect x="11" y="2" width="3" height="12" rx="1" fill="white"/>
       </svg>
     </div>
-    <span class="logo-name">Jimmy<span>ROI</span>
+    <span class="logo-name">Jimmy<span>ROI</span></span>
   </div>
+  <span class="header-badge">Data Analytics · ROI Calculator</span>
   <button class="header-cta">Book a demo</button>
 </header>
 
 <div class="hero">
-  <div class="hero-eyebrow">ROI Calculator</div>
+  <div class="hero-eyebrow">Sales Engineer Portfolio Project</div>
   <h1>See your <em>exact return</em> before you buy</h1>
   <p class="hero-sub">Enter your team's numbers below to get a personalized ROI estimate based on real customer benchmarks.</p>
 </div>
@@ -520,51 +397,33 @@
     <div class="results-grid">
       <div class="metric">
         <p class="metric-label">Time savings value</p>
-        <p class="metric-value green" id="r-time">—</p>
-        <p class="metric-sub" id="r-time-sub">per year</p>
+        <p class="metric-value blue" id="r-time">—</p>
+        <p class="metric-sub">per year</p>
       </div>
       <div class="metric">
         <p class="metric-label">Incident cost avoided</p>
-        <p class="metric-value green" id="r-incident">—</p>
+        <p class="metric-value blue" id="r-incident">—</p>
         <p class="metric-sub">per year</p>
       </div>
       <div class="metric">
         <p class="metric-label">Platform investment</p>
-        <p class="metric-value" id="r-cost">—</p>
+        <p class="metric-value white" id="r-cost">—</p>
         <p class="metric-sub">annual license</p>
       </div>
       <div class="metric">
         <p class="metric-label">Net annual ROI</p>
-        <p class="metric-value green" id="r-net">—</p>
+        <p class="metric-value blue" id="r-net">—</p>
         <p class="metric-sub" id="r-multiple">—</p>
       </div>
     </div>
 
     <table class="breakdown-table">
-      <tr>
-        <td>Hours saved per analyst (70% automation rate)</td>
-        <td id="b-hrs">—</td>
-      </tr>
-      <tr>
-        <td>Total analyst hours reclaimed per year</td>
-        <td id="b-totalhrs">—</td>
-      </tr>
-      <tr>
-        <td>Value of reclaimed analyst time</td>
-        <td id="b-timeval">—</td>
-      </tr>
-      <tr>
-        <td>Avg incident cost $15k × 40% reduction</td>
-        <td id="b-incval">—</td>
-      </tr>
-      <tr>
-        <td>JimmyROI platform fee (annual)</td>
-        <td id="b-platform">—</td>
-      </tr>
-      <tr class="total">
-        <td>Net annual ROI</td>
-        <td id="b-net">—</td>
-      </tr>
+      <tr><td>Hours saved per analyst (70% automation rate)</td><td id="b-hrs">—</td></tr>
+      <tr><td>Total analyst hours reclaimed per year</td><td id="b-totalhrs">—</td></tr>
+      <tr><td>Value of reclaimed analyst time</td><td id="b-timeval">—</td></tr>
+      <tr><td>Avg incident cost $15k × 40% reduction</td><td id="b-incval">—</td></tr>
+      <tr><td>JimmyROI platform fee (annual)</td><td id="b-platform">—</td></tr>
+      <tr class="total"><td>Net annual ROI</td><td id="b-net">—</td></tr>
     </table>
 
     <div class="payback-bar-wrap">
@@ -600,13 +459,13 @@
 </main>
 
 <div class="footer">
-  Built by Jimmy · JimmyROI ROI Calculator · Portfolio project
+  Built by Jimmy · JimmyROI · Sales Engineer Portfolio Project
 </div>
 
 <script>
   function fmt(n) {
-    if (Math.abs(n) >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
-    if (Math.abs(n) >= 1000) return '$' + Math.round(n / 1000) + 'k';
+    if (Math.abs(n) >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
+    if (Math.abs(n) >= 1000) return '$' + Math.round(n/1000) + 'k';
     return '$' + Math.round(n);
   }
 
@@ -631,7 +490,6 @@
     document.getElementById('r-cost').textContent = fmt(platform);
     document.getElementById('r-net').textContent = fmt(net);
     document.getElementById('r-multiple').textContent = multiple > 0 ? multiple + 'x return on investment' : 'negative ROI';
-
     document.getElementById('b-hrs').textContent = Math.round(hrsSavedPerAnalyst) + ' hrs/yr';
     document.getElementById('b-totalhrs').textContent = Math.round(totalHrsSaved).toLocaleString() + ' hrs';
     document.getElementById('b-timeval').textContent = fmt(timeSavings);
@@ -640,13 +498,9 @@
     document.getElementById('b-net').textContent = fmt(net);
 
     var paybackEl = document.getElementById('payback-text');
-    if (paybackMonths <= 1) {
-      paybackEl.textContent = 'Less than 1 month';
-    } else if (paybackMonths >= 24) {
-      paybackEl.textContent = 'Over 24 months — consider reducing team size or incident inputs';
-    } else {
-      paybackEl.textContent = paybackMonths + ' months to full payback';
-    }
+    if (paybackMonths <= 1) paybackEl.textContent = 'Less than 1 month to full payback';
+    else if (paybackMonths >= 24) paybackEl.textContent = 'Over 24 months — consider adjusting your inputs';
+    else paybackEl.textContent = paybackMonths + ' months to full payback';
 
     document.getElementById('payback-bar').style.width = paybackPct + '%';
   }
