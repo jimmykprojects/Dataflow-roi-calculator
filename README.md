@@ -40,9 +40,7 @@ Designing for a non-technical economic buyer audience
 
 **How to run locally**
 No build step needed. Just open index.html in any browser.
-bashgit clone https://github.com/yourusername/dataflow-roi-calculator
-cd dataflow-roi-calculator
-open index.html
+bashgit clone https://github.com/jimmykprojects/dataflow-roi-calculatorcd dataflow-roi-calculatoropen index.html
 
 
 **Built by Jimmy Kearney as a Sales Engineer portfolio project. DataFlow Analytics is a fictional company.**
