@@ -38,9 +38,6 @@ Technical documentation (this README, in-app methodology section)
 Designing for a non-technical economic buyer audience
 
 
-**How to run locally**
-No build step needed. Just open index.html in any browser.
-bashgit clone https://github.com/jimmykprojects/dataflow-roi-calculatorcddataflow-roi-calculatoropenindex.html
 
 
 **Built by Jimmy Kearney as a Sales Engineer portfolio project. DataFlow Analytics is a fictional company.**
